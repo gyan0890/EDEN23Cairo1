@@ -1,43 +1,47 @@
 #[contract] //Keyword to show that it's a Cairo contract
  
 //mod - keyword defining a module
-mod X {
-    use starknet::get_caller_address;
+mod Voting {
+    use starknet::get_caller_address; //Import libraries/packages and use them
     //use starknet::ContractAddress;
 
-    struct X {
-        //Define name and a map for storing the proposal votes
+    struct Storage {
+        //Define name(type "felt") and a map(LegacyMap::<a,b>) for storing the proposal votes
         
     }
 
-    //Populate the proposals array with a few default proposals
+    //Initialise a default proposal
     #[constructor]
-    fn constructor(_name: felt, _counter: u256) {
+    fn constructor(_name: felt, _propNum: u256) {
         
         //Initialise the proposal with 0 votes
-       
+        //Initialise the "name" variable
+        //HINT: Use "::write" 
+
 
     }
 
     #[external]
-    fn addProposals(_counter: u256) {
+    fn addProposals(_propNum: u256) {
         //Write to the proposal map
+        
     }
 
     #[external]
-    fn voteOnProposal(prop_num: u256) {
+    fn voteOnProposal(_propNum: u256) {
         //let voter = get_caller_address();
         
         //Read the proposalVotes mapping and increment by 1
+        //HINT: Use "::read"
 
         
         //Write the updated value here
-        proposalVotes::write(prop_num, votes);
+        proposalVotes::write(_propNum, votes);
     }
 
     #[view]
-    fn getVotesForProposal(prop_num: u256) -> felt {
-      proposalVotes::read(prop_num)
+    fn getVotesForProposal(_propNum: u256) -> felt {
+      proposalVotes::read(_propNum)
     }
 
     //TODO - Add a function to compare two given proposals and return the one with higher votes
