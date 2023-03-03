@@ -22,7 +22,7 @@ mod Voting {
     }
 
     #[external]
-    fn addProposals(_counter: u256) {
+    fn addProposals(_propNum: u256) {
         //STEP4: Add new proposals
         //BONUS: Check if the proposal number already exists
         
@@ -31,7 +31,7 @@ mod Voting {
     //OPTIONAL TODO: Add a function to register a voter - set the default proposal voted to 0
 
     #[external]
-    fn voteOnProposal(prop_num: u256) {
+    fn voteOnProposal(_propNum: u256) {
         //let voter = get_caller_address();
         //vote::write(voter, prop_num);
 
@@ -40,12 +40,12 @@ mod Voting {
         //BONUS:Check if the proposal exists
         //DOUBLE BONUS: Check if the voter has already voted for this proposal
 
-        proposalVotes::write(prop_num, votes);
+        proposalVotes::write(_propNum, votes);
     }
 
     #[view]
-    fn getVotesForProposal(prop_num: u256) -> felt {
-      proposalVotes::read(prop_num)
+    fn getVotesForProposal(_propNum: u256) -> felt {
+      proposalVotes::read(_propNum)
     }
 
     //BONUS TODO - Compare any 2 proposals and return the one with the highest number of votes 
